@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import BinForm from "@/components/bin-form";
 import BinList from "@/components/bin-list";
 import ExportBinsButton from "@/components/export-bins-button";
@@ -29,18 +30,39 @@ export default function BinTagger() {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <div className="flex justify-between items-center mb-6">
+    <motion.div
+      className="container mx-auto p-4"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      <motion.div
+        className="flex justify-between items-center mb-6"
+        initial={{ y: -20 }}
+        animate={{ y: 0 }}
+        transition={{ delay: 0.2 }}
+      >
         <h1 className="text-3xl font-bold">Bin Tagger</h1>
         <ModeToggle />
-      </div>
-      <div className="flex gap-4 mb-6 w-full">
+      </motion.div>
+      <motion.div
+        className="flex gap-4 mb-6 w-full"
+        initial={{ y: -20 }}
+        animate={{ y: 0 }}
+        transition={{ delay: 0.3 }}
+      >
         <BinForm onAddBin={addBin} />
         <ImportBinsButton onImport={importBins} />
         <ExportBinsButton bins={bins} />
-      </div>
+      </motion.div>
       <BinList bins={bins} onUpdateBin={updateBin} onRemoveBin={removeBin} />
-      <ExportButton bins={bins} />
-    </div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.4 }}
+      >
+        <ExportButton bins={bins} />
+      </motion.div>
+    </motion.div>
   );
 }
