@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
+import EnvironmentBar from "@/components/ui/environment-bar";
 
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
@@ -36,7 +37,8 @@ export default function RootLayout({
           forcedTheme={undefined}
           storageKey="theme"
         >
-          {children}
+          <EnvironmentBar />
+          <div>{children}</div>
         </ThemeProvider>
       </body>
     </html>
