@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "predev": "vercel env pull .env.local",
+    "predev": "vercel env pull .env.local || true",
     "dev": "next dev --turbopack",
-    "prebuild": "vercel env pull .env.local",
+    "prebuild": "vercel env pull .env.local || true",
     "build": "next build",
-    "prestart": "vercel env pull .env.local",
+    "prestart": "vercel env pull .env.local || true",
     "start": "next start",
     "lint": "next lint"
   },
